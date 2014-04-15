@@ -1,5 +1,7 @@
 package com.spc.forms;
 
+import applic.AppMenu;
+
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.ThemeResource;
@@ -21,7 +23,7 @@ public class MainWindowForm extends VerticalLayout implements View{
 	private TabSheet mainTabSheet;
 	private HorizontalLayout footerLayout;
 	private Embedded header_img;
-	private MenuBar menuBar;
+	private AppMenu menuBar;
 	private Label footerLabel;
 	private ProgressBar progressBar;
 	
@@ -44,7 +46,8 @@ public class MainWindowForm extends VerticalLayout implements View{
 		header_img.setMimeType("image/png");
 		headerLayout.addComponent(header_img);
 		// menu
-		menuBar = new MenuBar();
+		menuBar = new AppMenu();
+		menuBar.makeMenu();
 		headerLayout.addComponent(menuBar);
 		// body
 		bodyLayout = new VerticalLayout();
