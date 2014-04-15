@@ -1,7 +1,6 @@
 package com.spc.allocjpa;
 
 
-import com.spc.forms.MWF;
 import com.spc.forms.MainWindowForm;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;

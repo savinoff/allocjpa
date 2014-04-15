@@ -1,12 +1,11 @@
 package applic;
 
 import com.spc.allocjpa.AllocjpaUI;
+import com.spc.forms.ClassifForm;
 import com.spc.forms.SimpleForm;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TabSheet;
-import com.vaadin.ui.TabSheet.Tab;
 
 public class AppMenu extends MenuBar {
 
@@ -32,32 +31,32 @@ public class AppMenu extends MenuBar {
 			public void menuSelected(MenuItem selectedItem) {
 				AllocjpaUI currentUi = AllocjpaUI.getCurrent();
 				TabSheet mainTabSheet = currentUi.getMainWindowForm().getMainTabSheet();
+				ClassifForm tabItem = new ClassifForm();
+				mainTabSheet.addComponent(tabItem);
+				mainTabSheet.getTab(tabItem).setCaption("Классификаторы");
+				mainTabSheet.getTab(tabItem).setClosable(true);
+			}
+		};
+		MenuBar.Command addSimpleForm = new MenuBar.Command() {		
+			@Override
+			public void menuSelected(MenuItem selectedItem) {
+				AllocjpaUI currentUi = AllocjpaUI.getCurrent();
+				TabSheet mainTabSheet = currentUi.getMainWindowForm().getMainTabSheet();
 				SimpleForm tabItem = new SimpleForm();
 				mainTabSheet.addComponent(tabItem);
 				mainTabSheet.getTab(tabItem).setCaption("Простая форма");
 				mainTabSheet.getTab(tabItem).setClosable(true);
 			}
 		};
-		MenuBar.Command closeTab = new MenuBar.Command() {
-			
-			@Override
-			public void menuSelected(MenuItem selectedItem) {
-				AllocjpaUI currentUi = AllocjpaUI.getCurrent();
-				TabSheet mainTabSheet = currentUi.getMainWindowForm().getMainTabSheet();
-				String tabCaption = mainTabSheet.getSelectedTab().getCaption();
-				mainTabSheet.removeComponent((Component) mainTabSheet.getSelectedTab());
-				Notification.show("Закрыт таб " + tabCaption);
-				
-			}
-		};
 
 		// Пункты меню
 		MenuBar.MenuItem menuSettings = addItem("Настройка", null);
 		menuSettings.addItem("Классификаторы", null, addTabClassif);
-		menuSettings.addItem("Закрыть TAB", closeTab);
+		menuSettings.addItem("Простая форма", null, addSimpleForm);
 		MenuBar.MenuItem menuEntData = addItem("Ввод данных", null);
 		menuEntData.addItem("Значения кост-драйверов", null, notif1);
 		
+		@SuppressWarnings("unused")
 		MenuBar.MenuItem menuReports = addItem("Отчёты", null);
 
 	}
