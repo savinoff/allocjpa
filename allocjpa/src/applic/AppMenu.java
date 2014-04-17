@@ -32,9 +32,12 @@ public class AppMenu extends MenuBar {
 				AllocjpaUI currentUi = AllocjpaUI.getCurrent();
 				TabSheet mainTabSheet = currentUi.getMainWindowForm().getMainTabSheet();
 				ClassifForm tabItem = new ClassifForm();
+				tabItem.setHeight("100%");
 				mainTabSheet.addComponent(tabItem);
+				mainTabSheet.setHeight("100%");
 				mainTabSheet.getTab(tabItem).setCaption("Классификаторы");
 				mainTabSheet.getTab(tabItem).setClosable(true);
+				
 			}
 		};
 		MenuBar.Command addSimpleForm = new MenuBar.Command() {		
@@ -44,6 +47,7 @@ public class AppMenu extends MenuBar {
 				TabSheet mainTabSheet = currentUi.getMainWindowForm().getMainTabSheet();
 				SimpleForm tabItem = new SimpleForm();
 				mainTabSheet.addComponent(tabItem);
+				mainTabSheet.setHeight("100%");
 				mainTabSheet.getTab(tabItem).setCaption("Простая форма");
 				mainTabSheet.getTab(tabItem).setClosable(true);
 			}

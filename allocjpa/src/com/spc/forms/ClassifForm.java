@@ -36,7 +36,9 @@ public class ClassifForm extends HorizontalSplitPanel{
 		navigationTree.setNullSelectionAllowed(false);
 		
 		setFirstComponent(navigationTree);
-		
+		setSplitPosition(200, Unit.PIXELS);
+		FrmPersons frmPersons = new FrmPersons();
+		setSecondComponent(frmPersons);
 	}
 	
 

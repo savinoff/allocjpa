@@ -40,7 +40,7 @@ public class MainWindowForm extends VerticalLayout implements View{
 		header_img = new Embedded();
 		header_img.setImmediate(false);
 		header_img.setWidth("100%");
-		header_img.setHeight("80px");
+		header_img.setHeight("20px");
 		header_img.setSource(new ThemeResource("header.png"));
 		header_img.setType(1);
 		header_img.setMimeType("image/png");
