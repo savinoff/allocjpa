@@ -1,6 +1,10 @@
 package com.spc.allocjpa;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import com.spc.forms.MainWindowForm;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
@@ -15,6 +19,12 @@ public class AllocjpaUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
 		mainWindowForm = new MainWindowForm();
+//		test
+//		Persistence.getPersistenceUtil();
+		EntityManagerFactory entityManager = Persistence.createEntityManagerFactory("allocjpa");
+		
+//		end test
+		
 		setContent(mainWindowForm);
 	}
 	

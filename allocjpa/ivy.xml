@@ -38,9 +38,13 @@
 		<dependency org="com.vaadin" name="vaadin-client-compiler"
 			rev="&vaadin.version;" conf="widgetset-compile->default" />
 		
-				<!-- Adding JPAContainer-->
+		<!-- Adding JPAContainer-->
 		<dependency org="com.vaadin.addon" name="jpacontainer" rev="3.1.1" />
 		<!-- Adding javax.persistence -->
 		<dependency org="org.eclipse.persistence" name="javax.persistence" rev="2.0.0" />
+		<!-- Adding eclipselinc -->
+		<dependency org="org.eclipse.persistence" name="eclipselink" rev="2.5.0"/>
+		<!-- Adding PostgreSQL -->
+		<dependency org="postgresql" name="postgresql" rev="9.1-901.jdbc4"/>
 	</dependencies>
 </ivy-module>
