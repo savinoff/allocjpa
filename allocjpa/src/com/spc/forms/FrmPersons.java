@@ -16,6 +16,10 @@ public class FrmPersons extends VerticalLayout{
 		persons.sort(new String[] {"id"}, 
 					 new boolean [] {false});
 		Table personsTable = new Table("Таблица Persons", persons);
+		personsTable.setSizeFull();
+		personsTable.setSelectable(true);
+		personsTable.setMultiSelect(true);
+		personsTable.setImmediate(true);
 		addComponent(personsTable);
 		
 	}
