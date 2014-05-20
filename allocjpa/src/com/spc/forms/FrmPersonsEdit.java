@@ -18,8 +18,10 @@ public class FrmPersonsEdit extends VerticalLayout {
 		Label label = new Label("Форма редактирования Персонов");
 		addComponent(label);
 		
-		BasicCrudView view = new BasicCrudView (Person.class, PERSISTENCE_UNIT);
-		addComponent(view);
+//		BasicCrudView view = new BasicCrudView (Person.class, PERSISTENCE_UNIT);
+//		addComponent(view);
+		
+		addComponent(new Label("-------end---------"));
 	}
 
 }

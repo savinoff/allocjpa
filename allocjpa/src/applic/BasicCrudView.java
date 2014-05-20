@@ -9,10 +9,12 @@ import com.vaadin.event.Action;
 import com.vaadin.event.Action.Handler;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.themes.Reindeer;
 import com.vaadin.ui.VerticalSplitPanel;
 
 public class BasicCrudView<T> extends AbsoluteLayout implements
@@ -36,26 +38,40 @@ Property.ValueChangeListener, Handler, ClickListener {
 		this.entityClass = entityClass;
 		this.persistenceUnit = persistenceUnit;
 		setSizeFull();
-		initContainer();
-		initFieldFactory();
-		buildView();
-		
+		System.out.println("SFS");
+//		initContainer();
+//		initFieldFactory();
+//		buildView();
+//		System.out.println("BVEnd");
+//		
 	}
 	
 	protected void buildView() {
-		setSizeFull();
-		panel = new Panel(getCaption());
-		panel.setSizeFull();
-		addComponent(panel);
+//		setSizeFull();
+//		panel = new Panel(getCaption());
+//		panel.setSizeFull();
+//		addComponent(panel);
 		
 		VerticalSplitPanel verticalSplitPanel = new VerticalSplitPanel();
 		verticalSplitPanel.setSizeFull();
 		
+		Label label = new Label("test test test");
+		addComponent(label, "top:0;right:0");
+		
+		
 		table.setSizeFull();
 		table.setSelectable(true);
-		//table.; - добавить листнеры и прочее
+		table.addValueChangeListener(this);
+		table.setImmediate(true);
+		table.addActionHandler(this);
 		
 		verticalSplitPanel.addComponent(table);
+		
+		addButton = new Button("+",this);
+		addButton.setDescription("Add new " + getEntityClass().getSimpleName());
+		//addButton.setStyleName(Reindeer.BUTTON_SMALL);
+		addComponent(addButton, "top:0;right:40px");
+		
 		
 	}
 
