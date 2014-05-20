@@ -1,5 +1,6 @@
 package com.spc.forms;
 
+import java.util.HashMap;
 import java.util.List;
 
 import java_cup.internal_error;
@@ -25,12 +26,15 @@ public class ClassifForm extends HorizontalSplitPanel {
 	private String treeItemClassifAdress = "Adress";
 
 	// Пункт меню (ID), Форма, Родитель (ID Родителя)
-	private Object[][] treeItems = new Object[][] {
-			new Object[] { "Заголовочный пункт дерева" },
-			new Object[] { "Справочнички",
-					new Object[] { "Persons",  "Справочнички" },
-					new Object[] { "Адреса", new FrmAdresses(), "Справочнички" } },
-			new Object[] { "Завершающий пукт дерева" } };
+	private static Object[][] treeItems = new Object[][] {
+		new Object[] { "Заголовочный пункт дерева" },
+		new Object[] { "Справочнички"},
+				 new Object[] {"Persons", "Справочнички", new FrmPersons()},
+				 new Object[] {"Адреса","Справочнички", new FrmAdresses()},
+		new Object[] { "Завершающий пукт дерева" } };
+
+	//private HashMap<String, Object> treeItemsFrms;
+	private HashMap treeItemsFrms = new HashMap();
 	
 	private Object[] treeItemsForms = new Object[] {
 			"Persons", new FrmPersons()
@@ -64,20 +68,19 @@ public class ClassifForm extends HorizontalSplitPanel {
 		frmPersons = new FrmPersons();
 		frmAdresses = new FrmAdresses();
 
-		for (int i = 0; i < treeItems.length; i++) {
-			String menuIteString = (String) (treeItems[i][0]);
-			System.out.println((String) (treeItems[i][0]));
-			navigationTree.addItem(menuIteString);
-			if (treeItems[i].length == 1) {
-				navigationTree.setChildrenAllowed(menuIteString, false);
+		for(int i=0; i < treeItems.length; i++) {
+			System.out.println(treeItems[i][0]);
+			navigationTree.addItem(treeItems[i][0]);
+			System.out.println(treeItems[i].length);
+			if( treeItems[i].length > 1) {
+					String currItemString = (String) treeItems[i][0];
+					System.out.println("Установим родителя " + treeItems[i][1]);
+					navigationTree.setParent(treeItems[i][0], treeItems[i][1]);
+					System.out.println("Добавим связь формы и ид части дерева для " + treeItems[i][0] + " форма " + treeItems[i][2]);
+					treeItemsFrms.put((String) treeItems[i][0], treeItems[i][2] );
 			} else {
-				for (int u = 1; u < treeItems[i].length; u++) {
-					
-					navigationTree.addItem(treeItems[i][u]);
-				}
-
+				navigationTree.setChildrenAllowed(treeItems[i][0], false);
 			}
-
 		}
 	}
 
