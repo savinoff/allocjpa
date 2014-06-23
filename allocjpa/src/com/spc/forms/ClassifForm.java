@@ -22,7 +22,12 @@ public class ClassifForm extends HorizontalSplitPanel {
 				 new Object[] {"Persons", "Справочнички", new FrmPersons()},
 				 new Object[] {"Адреса","Справочнички", new FrmAdresses()},
 				 new Object[] {"Добавляемые Persons", "Справочнички", new FrmPersonsEdit()},
-		new Object[] { "Завершающий пукт дерева" } };
+				 new Object[] {"SimpleAbsoluteLayoutForm", "Справочнички", new SimpleAbsoluteLayoutForm()},
+		new Object[] { "Завершающий пукт дерева" },
+		new Object[] {"ТН ВЭД"},
+				 new Object[] {"Справочник ТНВЭД", "ТН ВЭД", new FrmTnved()},
+				 new Object[] {"Поиск ТНВЭД",	   "ТН ВЭД", new SimpleForm()}
+			};
 
 	private HashMap<String, Object> treeItemsFrms = new HashMap<String, Object>();
 
